@@ -1,14 +1,9 @@
 package edu.utfpr.builders;
 
 import edu.utfpr.enums.AcucarEnum;
-import edu.utfpr.objects.Refeicao;
+import edu.utfpr.objects.RefeicaoCardapio;
 
-/**
- * Builder class for Refeicao objects.
- *
- * @author Daniel Fonseca <danielfonseca@alunos.utfpr.edu.br>
- */
-public class RefeicaoBuilder implements BaseBuilder {
+public class CardapioBuilder implements BaseBuilder {
     private String nome;
     private String descricao;
     private double preco;
@@ -24,7 +19,11 @@ public class RefeicaoBuilder implements BaseBuilder {
 
     private AcucarEnum taxaAcucar;
 
-    public void resetValues(){
+    public CardapioBuilder() {
+        resetValues();
+    }
+
+    public void resetValues() {
         this.nome = "";
         this.descricao = "";
         this.preco = 0.0;
@@ -40,77 +39,73 @@ public class RefeicaoBuilder implements BaseBuilder {
         this.taxaAcucar = null;
     }
 
-    public RefeicaoBuilder() {
-        resetValues();
-    }
-
-    public RefeicaoBuilder nome(String nome) {
-        this.nome = nome;
+    public CardapioBuilder nome(String nome) {
+        this.nome = nome + " - Especial do dia";
         return this;
     }
 
-    public RefeicaoBuilder descricao(String descricao) {
+    public CardapioBuilder descricao(String descricao) {
         this.descricao = descricao;
         return this;
     }
 
-    public RefeicaoBuilder preco(double preco) {
-        this.preco = preco;
+    public CardapioBuilder preco(double preco) {
+        this.preco = preco * 1.1;
         return this;
     }
 
-    public RefeicaoBuilder calorias(int calorias) {
+    public CardapioBuilder calorias(int calorias) {
         this.calorias = calorias;
         return this;
     }
 
-    public RefeicaoBuilder tempoPreparo(int tempoPreparo) {
-        this.tempoPreparo = tempoPreparo;
+    public CardapioBuilder tempoPreparo(int tempoPreparo) {
+        this.tempoPreparo = tempoPreparo + 5;
         return this;
     }
 
-    public RefeicaoBuilder isEntrada(boolean isEntrada) {
+    public CardapioBuilder isEntrada(boolean isEntrada) {
         this.isEntrada = isEntrada;
         return this;
     }
 
-    public RefeicaoBuilder isPratoPrincipal(boolean isPratoPrincipal) {
+    public CardapioBuilder isPratoPrincipal(boolean isPratoPrincipal) {
         this.isPratoPrincipal = isPratoPrincipal;
         return this;
     }
 
-    public RefeicaoBuilder isBebida(boolean isBebida) {
+    public CardapioBuilder isBebida(boolean isBebida) {
         this.isBebida = isBebida;
         return this;
     }
 
-    public RefeicaoBuilder isSobremesa(boolean isSobremesa) {
+    public CardapioBuilder isSobremesa(boolean isSobremesa) {
         this.isSobremesa = isSobremesa;
         return this;
     }
 
-    public RefeicaoBuilder isVegetariano(boolean isVegetariano) {
+    public CardapioBuilder isVegetariano(boolean isVegetariano) {
         this.isVegetariano = isVegetariano;
         return this;
     }
 
-    public RefeicaoBuilder isGlutenFree(boolean isGlutenFree) {
+    public CardapioBuilder isGlutenFree(boolean isGlutenFree) {
         this.isGlutenFree = isGlutenFree;
         return this;
     }
 
-    public RefeicaoBuilder isLactoseFree(boolean isLactoseFree) {
+    public CardapioBuilder isLactoseFree(boolean isLactoseFree) {
         this.isLactoseFree = isLactoseFree;
         return this;
     }
 
-    public RefeicaoBuilder taxaAcucar(AcucarEnum taxaAcucar) {
+    public CardapioBuilder taxaAcucar(AcucarEnum taxaAcucar) {
         this.taxaAcucar = taxaAcucar;
         return this;
     }
 
-    public Refeicao build() {
-        return new Refeicao(
+    public RefeicaoCardapio build() {
+        return new RefeicaoCardapio(
                 nome,
                 descricao,
                 preco,
@@ -126,4 +121,5 @@ public class RefeicaoBuilder implements BaseBuilder {
                 taxaAcucar
         );
     }
+
 }

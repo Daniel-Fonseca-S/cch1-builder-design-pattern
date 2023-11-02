@@ -2,24 +2,7 @@ package edu.utfpr.objects;
 
 import edu.utfpr.enums.AcucarEnum;
 
-/**
- * Class for Refeicao objects.
- *
- * @param nome
- * @param descricao
- * @param preco
- * @param calorias
- * @param tempoPreparo
- * @param isEntrada
- * @param isPratoPrincipal
- * @param isBebida
- * @param isSobremesa
- * @param isVegetariano
- * @param isGlutenFree
- * @param isLactoseFree
- * @author Daniel Fonseca <danielfonseca@alunos.utfpr.edu.br>
- */
-public record Refeicao(
+public record RefeicaoCardapio(
         String nome,
         String descricao,
         double preco,
@@ -37,11 +20,11 @@ public record Refeicao(
     @Override
     public String toString() {
         return """
-                Nome: %s;
-                Descrição: %s;
-                Preço: R$ %.2f;
-                Calorias: %d;
-                Tempo de preparo: %d Minutos;
+                Item do cardápio: %s;
+                Descrição do item: %s;
+                Preço do item com taxa: R$ %.2f;
+                Calorias do item: %d;
+                Tempo de produção: %d Minutos;
                 É entrada? %s;
                 É prato principal? %s;
                 É bebida? %s;
@@ -49,7 +32,7 @@ public record Refeicao(
                 É vegetariano? %s;
                 É sem glúten? %s;
                 É sem lactose? %s;
-                Taxa de açúcar: %s.
+                Nível de açúcar: %s.
                 """.formatted(
                 nome,
                 descricao,
@@ -63,7 +46,7 @@ public record Refeicao(
                 isVegetariano ? "Sim" : "Não",
                 isGlutenFree ? "Sim" : "Não",
                 isLactoseFree ? "Sim" : "Não",
-                taxaAcucar != null ? taxaAcucar.toString() : "Não se aplica"
+                taxaAcucar == null ? "Não se aplica" : taxaAcucar.toString()
         );
     }
 }

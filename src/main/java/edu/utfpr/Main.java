@@ -1,8 +1,10 @@
 package edu.utfpr;
 
+import edu.utfpr.builders.CardapioBuilder;
 import edu.utfpr.builders.RefeicaoBuilder;
 import edu.utfpr.directors.RefeicaoDirector;
 import edu.utfpr.objects.Refeicao;
+import edu.utfpr.objects.RefeicaoCardapio;
 
 /**
  * Main class for the project.
@@ -11,28 +13,35 @@ import edu.utfpr.objects.Refeicao;
  */
 public class Main {
     public static void main(String[] args) {
+        RefeicaoBuilder builderRef = new RefeicaoBuilder();
+        CardapioBuilder builderCard = new CardapioBuilder();
         RefeicaoDirector director = new RefeicaoDirector();
-        RefeicaoBuilder builder = new RefeicaoBuilder();
+        director.setBuilderRef(builderRef);
+        director.setBuilderCard(builderCard);
 
-        director.buildSobremesaSorvete(builder);
-        Refeicao sorvete = builder.build();
-        director.buildSobremesaPudim(builder);
-        Refeicao pudim = builder.build();
-        director.buildPizzaCalabresa(builder);
-        Refeicao pizza = builder.build();
-        director.buildCocaCola(builder);
-        Refeicao coca = builder.build();
-        director.buildPaoFrances(builder);
-        Refeicao pao = builder.build();
+        System.out.println("Refeições:");
+        director.buildSobremesaSorvete();
+        Refeicao sorvete = builderRef.build();
+        System.out.println(sorvete);
+        director.buildSobremesaPudim();
+        Refeicao pudim = builderRef.build();
+        System.out.println(pudim);
+        director.buildPizzaCalabresa();
+        Refeicao pizza = builderRef.build();
+        System.out.println(pizza);
+        director.buildCocaCola();
+        Refeicao coca = builderRef.build();
+        System.out.println(coca);
+        director.buildPaoFrances();
+        Refeicao pao = builderRef.build();
+        System.out.println(pao);
 
-        System.out.println(sorvete.toString());
         System.out.println();
-        System.out.println(pudim.toString());
-        System.out.println();
-        System.out.println(pizza.toString());
-        System.out.println();
-        System.out.println(coca.toString());
-        System.out.println();
-        System.out.println(pao.toString());
+
+        System.out.println("Cardápio:");
+        director.buildCardapioSegunda();
+        RefeicaoCardapio segunda = builderCard.build();
+        System.out.println(segunda);
+
     }
 }
